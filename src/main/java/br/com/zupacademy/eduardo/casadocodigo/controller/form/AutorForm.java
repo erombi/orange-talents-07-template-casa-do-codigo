@@ -28,4 +28,8 @@ public class AutorForm {
     public Autor converter() {
         return new Autor(this.nome, this.email, this.descricao);
     }
+
+    public String getEmail() {
+        return this.email;
+    }
 }

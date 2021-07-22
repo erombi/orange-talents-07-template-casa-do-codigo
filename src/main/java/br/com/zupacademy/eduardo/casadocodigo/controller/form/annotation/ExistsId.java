@@ -5,14 +5,14 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = DuplicatedValueValidator.class)
+@Constraint(validatedBy = ExistsIdValidator.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DuplicatedValue {
+public @interface ExistsId {
     //Spring não retorna mensagem que esta no resources -> messages.properties
-    //String message() default "{br.com.zupacademy.eduardo.casadocodigo.beanvalidation.duplicatedvalue}";
+    //String message() default "{br.com.zupacademy.eduardo.casadocodigo.beanvalidation.existsId}";
 
-    String message() default "Campo com valor duplicado encontrado !";
+    String message() default "Entidade não encontrada !";
 
     Class<?>[] groups() default {};
 
@@ -22,3 +22,4 @@ public @interface DuplicatedValue {
 
     Class<?> clazz() ;
 }
+

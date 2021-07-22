@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 
-public class DuplicatedValueImpl implements ConstraintValidator<DuplicatedValue, Object> {
+public class DuplicatedValueValidator implements ConstraintValidator<DuplicatedValue, Object> {
 
     private String field;
     private Class<?> clazz;

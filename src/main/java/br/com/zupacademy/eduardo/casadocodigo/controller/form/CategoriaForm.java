@@ -1,11 +1,13 @@
 package br.com.zupacademy.eduardo.casadocodigo.controller.form;
 
+import br.com.zupacademy.eduardo.casadocodigo.controller.form.annotation.DuplicatedValue;
 import br.com.zupacademy.eduardo.casadocodigo.model.Categoria;
 
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaForm {
 
+    @DuplicatedValue(field = "nome", clazz = Categoria.class)
     @NotBlank
     private String nome;
 

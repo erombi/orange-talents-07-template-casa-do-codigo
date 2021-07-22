@@ -1,7 +1,6 @@
 package br.com.zupacademy.eduardo.casadocodigo.controller;
 
 import br.com.zupacademy.eduardo.casadocodigo.controller.form.CategoriaForm;
-import br.com.zupacademy.eduardo.casadocodigo.controller.form.validator.CategoriaValidator;
 import br.com.zupacademy.eduardo.casadocodigo.model.Categoria;
 import br.com.zupacademy.eduardo.casadocodigo.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,6 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaRepository repository;
-
-    @Autowired
-    private CategoriaValidator categoriaValidator;
-
-    @InitBinder
-    public void initCategoriaBinder(WebDataBinder binder) {
-        binder.addValidators(categoriaValidator);
-    }
 
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody @Valid CategoriaForm form) {

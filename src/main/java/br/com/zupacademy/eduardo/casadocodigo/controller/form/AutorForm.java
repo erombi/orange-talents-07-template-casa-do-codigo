@@ -1,5 +1,6 @@
 package br.com.zupacademy.eduardo.casadocodigo.controller.form;
 
+import br.com.zupacademy.eduardo.casadocodigo.controller.form.annotation.DuplicatedValue;
 import br.com.zupacademy.eduardo.casadocodigo.model.Autor;
 import org.hibernate.validator.constraints.Length;
 
@@ -11,6 +12,7 @@ public class AutorForm {
     @NotBlank
     private String nome;
 
+    @DuplicatedValue(field = "email", clazz = Autor.class)
     @Email
     @NotBlank
     private String email;
@@ -19,7 +21,7 @@ public class AutorForm {
     @NotBlank
     private String descricao;
 
-    public AutorForm(String nome, String email, String descricao) {
+    public AutorForm(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Length(max = 400) String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;

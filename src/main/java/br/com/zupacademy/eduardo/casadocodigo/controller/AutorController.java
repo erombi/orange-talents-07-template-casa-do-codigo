@@ -1,6 +1,5 @@
 package br.com.zupacademy.eduardo.casadocodigo.controller;
 
-import br.com.zupacademy.eduardo.casadocodigo.controller.form.validator.UniqueEmailAutorValidator;
 import br.com.zupacademy.eduardo.casadocodigo.model.Autor;
 import br.com.zupacademy.eduardo.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.eduardo.casadocodigo.controller.form.AutorForm;
@@ -19,14 +18,6 @@ public class AutorController {
 
     @Autowired
     private AutorRepository repository;
-
-    @Autowired
-    private UniqueEmailAutorValidator validatorEmail;
-
-    @InitBinder
-    public void initAutorValidator(WebDataBinder binder) {
-        binder.addValidators(validatorEmail);
-    }
 
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody @Valid AutorForm form) {

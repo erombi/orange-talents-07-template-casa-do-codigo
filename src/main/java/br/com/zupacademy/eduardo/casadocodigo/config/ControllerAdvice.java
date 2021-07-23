@@ -1,6 +1,8 @@
 package br.com.zupacademy.eduardo.casadocodigo.config;
 
+import br.com.zupacademy.eduardo.casadocodigo.config.exception.ResourceNotFoundException;
 import br.com.zupacademy.eduardo.casadocodigo.config.validacao.ErroDeFormularioDTO;
+import br.com.zupacademy.eduardo.casadocodigo.config.validacao.ErroPadraoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -42,6 +44,14 @@ public class ControllerAdvice {
     public ErroDeFormularioDTO handle(SQLIntegrityConstraintViolationException exception) {
         ErroDeFormularioDTO erroDto = new ErroDeFormularioDTO();
         erroDto.setErro("Erro de integridade do banco");
+
+        return erroDto;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ErroPadraoDTO handle(ResourceNotFoundException exception) {
+        ErroPadraoDTO erroDto = new ErroPadraoDTO(HttpStatus.NOT_FOUND.value(), exception.getMessage(), exception.getPath());
 
         return erroDto;
     }

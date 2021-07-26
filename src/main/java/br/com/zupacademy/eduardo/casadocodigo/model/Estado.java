@@ -29,6 +29,18 @@ public class Estado {
         this.pais = pais;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
